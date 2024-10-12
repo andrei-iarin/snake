@@ -32,6 +32,15 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_w:
+                snake_diretion = (0, -pixel_width)
+            if event.key == pygame.K_s:
+                snake_diretion = (0, pixel_width)
+            if event.key == pygame.K_a:
+                snake_diretion = [-pixel_width, 0]
+            if event.key == pygame.K_d:
+                snake_diretion = [pixel_width, 0]
 
     screen.fill('black')
     
@@ -45,14 +54,7 @@ while running:
         snake.append(snake_pixel.copy())
 
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_w]:
-        snake_diretion = (0, -pixel_width)
-    if keys[pygame.K_s]:
-        snake_diretion = (0, pixel_width)
-    if keys[pygame.K_a]:
-        snake_diretion = [-pixel_width, 0]
-    if keys[pygame.K_d]:
-        snake_diretion = [pixel_width, 0]
+   
 
     for snake_part in snake:
         pygame.draw.rect(screen, 'green', snake_part)
